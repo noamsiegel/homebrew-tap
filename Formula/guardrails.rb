@@ -1,8 +1,8 @@
 class Guardrails < Formula
   desc "Personal git-hook quality layer (gitleaks, actionlint, commitlint, branch-guard)"
   homepage "https://github.com/noamsiegel/guardrails"
-  url "https://github.com/noamsiegel/guardrails/archive/refs/tags/v0.3.3.tar.gz"
-  sha256 "b3b71d27f35a2bfcc4ad9609b597d40ee9a151e3bf3e6c651cb87a2cace06fbd"
+  url "https://github.com/noamsiegel/guardrails/archive/refs/tags/v0.3.4.tar.gz"
+  sha256 "84fd9c9f46a9e78e29ca015d772324ad757a47823ff87983d424a1fc38528bed"
   license "MIT"
   head "https://github.com/noamsiegel/guardrails.git", branch: "main"
 
