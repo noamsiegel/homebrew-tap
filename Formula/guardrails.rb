@@ -1,8 +1,8 @@
 class Guardrails < Formula
   desc "Personal git-hook quality layer (gitleaks, actionlint, commitlint, branch-guard)"
   homepage "https://github.com/noamsiegel/guardrails"
-  url "https://github.com/noamsiegel/guardrails/archive/refs/tags/v0.2.0.tar.gz"
-  sha256 "1d73e39abaef1fcf8e2c2f5e57d09e80089ab92eca4fae20aa6a3b06b46ecf0a"
+  url "https://github.com/noamsiegel/guardrails/archive/refs/tags/v0.3.0.tar.gz"
+  sha256 "5eaad7edef06c18ebd42463c1397ad1c05e071a969bcf4a04283d24b0616b683"
   license "MIT"
   head "https://github.com/noamsiegel/guardrails.git", branch: "main"
 
@@ -12,35 +12,35 @@ class Guardrails < Formula
   depends_on "actionlint"
 
   def install
-    # Install the hook entry shims as the "binaries" of this package.
-    # NOTE: in the post-day-2 refactor (Phase 5), this becomes a single `guardrails` binary.
-    # For now, ship the existing files into pkgshare so users can install via
-    # `guardrails install` or set core.hooksPath to the install dir.
-    pkgshare.install "pre-commit", "pre-push", "commit-msg"
+    bin.install "guardrails"
     pkgshare.install "lefthook.yml", "gitleaks.toml", "commitlint.config.cjs"
     (pkgshare / "checks").install Dir["checks/*"]
     (pkgshare / "tests").install Dir["tests/*"]
+
+    # The binary uses GUARDRAILS_TEMPLATES env var to locate shipped resources.
+    # Inject the brew install path so `guardrails run <hook>` finds lefthook.yml.
+    inreplace bin / "guardrails", /^GUARDRAILS_TEMPLATES=.*$/,
+              "GUARDRAILS_TEMPLATES=\"${GUARDRAILS_TEMPLATES:-#{pkgshare}}\""
   end
 
   def caveats
     <<~EOS
-      guardrails v0.2.0 is config-shaped, not yet a real CLI binary.
+      To install guardrails hooks into the current repo:
+        guardrails install
 
-      To use:
-        git config --global core.hooksPath #{pkgshare}
+      To configure new clones to auto-install guardrails:
+        guardrails --global-template
 
-      Or per-repo:
-        ln -s #{pkgshare}/pre-commit  .git/hooks/pre-commit
-        ln -s #{pkgshare}/pre-push    .git/hooks/pre-push
-        ln -s #{pkgshare}/commit-msg  .git/hooks/commit-msg
+      Migrate from the legacy ~/.git-hooks-personal/ setup:
+        guardrails migrate           # dry-run
+        guardrails migrate --apply   # perform the migration
 
-      A real `guardrails` CLI with safe `install` / `uninstall` is planned for v0.3.0.
+      See `guardrails --help` and the README for details.
     EOS
   end
 
   test do
-    # Smoke test: lefthook can read the shipped config.
-    system "#{HOMEBREW_PREFIX}/bin/lefthook", "validate",
-           "--config", "#{pkgshare}/lefthook.yml"
+    assert_match(/guardrails/, shell_output("#{bin}/guardrails --version"))
+    system "#{bin}/guardrails", "doctor"
   end
 end
