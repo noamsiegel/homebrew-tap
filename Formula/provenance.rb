@@ -1,8 +1,8 @@
 class Provenance < Formula
   desc "Capture Claude Code session JSONL as secret gists linked from GitHub PRs"
   homepage "https://github.com/noamsiegel/provenance"
-  url "https://github.com/noamsiegel/provenance/archive/refs/tags/v0.5.0.tar.gz"
-  sha256 "d4ee5c663df299e7c2ca2a49071ae305a0119b577306801bb4e225510705e71e"
+  url "https://github.com/noamsiegel/provenance/archive/refs/tags/v0.6.0.tar.gz"
+  sha256 "07485849d92a7ffce7ca57955d7032848bbf1697cb3b3c7d492773247ba98647"
   license "MIT"
   head "https://github.com/noamsiegel/provenance.git", branch: "main"
 
