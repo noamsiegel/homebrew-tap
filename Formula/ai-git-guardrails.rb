@@ -1,8 +1,8 @@
 class AiGitGuardrails < Formula
   desc "Git-hook quality layer for AI-coding workflows"
   homepage "https://github.com/noamsiegel/ai-git-guardrails"
-  url "https://github.com/noamsiegel/ai-git-guardrails/archive/refs/tags/v0.8.2.tar.gz"
-  sha256 "01b9110fb049c13c523322045d7f098a197e6407f655f39e446c86c51e3ba0cd"
+  url "https://github.com/noamsiegel/ai-git-guardrails/archive/refs/tags/v0.8.3.tar.gz"
+  sha256 "500e8e73a4e078b2063ebabafd2d255b10ecf6721553f334069b4f2c5547fe1b"
   license "MIT"
   head "https://github.com/noamsiegel/ai-git-guardrails.git", branch: "main"
 
