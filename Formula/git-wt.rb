@@ -13,10 +13,19 @@ class GitWt < Formula
     bin.install "git-wt"
     # Convenience alias: `wt` invokes the same binary.
     bin.install_symlink "git-wt" => "wt"
-    pkgshare.install Dir["examples/*"]
+    pkgshare.install Dir["examples/*"] if File.directory?("examples")
+    pkgshare.install "plugins-registry.json"
+    pkgshare.install "docs" if File.directory?("docs")
+
+    # Point WT_PLUGIN_REGISTRY at the brew-installed registry file so
+    # `wt plugin install <name>` resolves bare names without env tinkering.
+    inreplace bin / "git-wt", /^WT_PLUGIN_REGISTRY=.*$/,
+              "WT_PLUGIN_REGISTRY=\"${WT_PLUGIN_REGISTRY:-#{pkgshare}/plugins-registry.json}\""
   end
 
   test do
     assert_match(/^wt /, shell_output("#{bin}/git-wt --version"))
+    # Verify the registry resolves correctly post-install.
+    assert_match(/herdr/, shell_output("#{bin}/git-wt plugin install nonexistent 2>&1", 1))
   end
 end
