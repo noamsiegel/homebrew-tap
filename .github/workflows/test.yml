@@ -11,16 +11,27 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Test each formula
+      - name: Tap the working tree
+        # Homebrew 4.x rejects path-based `brew install` / `brew audit`.
+        # Tap the checked-out repo so the formulas are addressable as
+        # `noamsiegel/tap/<name>`.
         run: |
+          brew tap noamsiegel/tap "$GITHUB_WORKSPACE"
+
+      - name: Audit, install, and test each formula
+        run: |
+          set -e
           for formula in Formula/*.rb; do
-            echo "::group::Audit $formula"
-            brew audit --new --strict --online "$formula" || true
+            name=$(basename "$formula" .rb)
+            ref="noamsiegel/tap/$name"
+            echo "::group::Audit $name"
+            # `audit --online` hits external URLs and can be flaky; allow failures.
+            brew audit --strict --online "$ref" || true
             echo "::endgroup::"
-            echo "::group::Install $formula"
-            brew install --build-from-source "$formula"
+            echo "::group::Install $name"
+            brew install --build-from-source "$ref"
             echo "::endgroup::"
-            echo "::group::Test $formula"
-            brew test "$formula"
+            echo "::group::Test $name"
+            brew test "$ref"
             echo "::endgroup::"
           done
