@@ -9,7 +9,7 @@ jobs:
   test:
     runs-on: macos-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
 
       - name: Update Homebrew + tap third-party formula sources
         # macos-latest sets HOMEBREW_NO_AUTO_UPDATE=1; explicitly update so
