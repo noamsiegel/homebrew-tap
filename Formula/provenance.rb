@@ -11,7 +11,7 @@ class Provenance < Formula
   depends_on "gitleaks"
 
   def install
-    libexec.install "cli.ts", "package.json"
+    libexec.install "cli.ts", "package.json", "src"
     (bin / "provenance").write <<~SH
       #!/usr/bin/env bash
       exec #{Formula["bun"].opt_bin}/bun #{libexec}/cli.ts "$@"
