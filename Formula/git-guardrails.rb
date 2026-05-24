@@ -1,8 +1,8 @@
 class GitGuardrails < Formula
   desc "User-owned Git hook quality layer"
   homepage "https://github.com/noamsiegel/git-guardrails"
-  url "https://github.com/noamsiegel/git-guardrails/archive/refs/tags/v0.9.1.tar.gz"
-  sha256 "2f5b11b0f1419c2733b93836bcc118ad4348021aee51d96e60f83d95181e668e"
+  url "https://github.com/noamsiegel/git-guardrails/archive/refs/tags/v0.9.2.tar.gz"
+  sha256 "8db0d6643c84bc5d93fb1dda8559aec2c0fbb6fbaff5b75969d76e6bc13de8b1"
   license "MIT"
   head "https://github.com/noamsiegel/git-guardrails.git", branch: "main"
 
