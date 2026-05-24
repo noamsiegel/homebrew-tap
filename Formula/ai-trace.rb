@@ -1,8 +1,8 @@
 class AiTrace < Formula
-  desc "Capture AI coding session transcripts (Claude Code / Codex) as secret gists linked from GitHub PRs"
+  desc "Capture AI coding session transcripts as PR-linked gists"
   homepage "https://github.com/noamsiegel/ai-trace"
-  url "https://github.com/noamsiegel/ai-trace/archive/refs/tags/v0.8.1.tar.gz"
-  sha256 "f989585988e4f2db9aeabd55e4025a66f6ee189d521b6b99be0b3cd8416f2fbf"
+  url "https://github.com/noamsiegel/ai-trace/archive/refs/tags/v0.8.2.tar.gz"
+  sha256 "1c4926d68bd5281cf54845452f10ee737a1d46fa1a171e0985cb415c228f96db"
   license "MIT"
   head "https://github.com/noamsiegel/ai-trace.git", branch: "main"
 

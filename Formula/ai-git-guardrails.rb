@@ -1,15 +1,15 @@
 class AiGitGuardrails < Formula
-  desc "Personal git-hook quality layer for AI-coding workflows (gitleaks, actionlint, commitlint, branch-guard)"
+  desc "Git-hook quality layer for AI-coding workflows"
   homepage "https://github.com/noamsiegel/ai-git-guardrails"
-  url "https://github.com/noamsiegel/ai-git-guardrails/archive/refs/tags/v0.8.1.tar.gz"
-  sha256 "7a12f7dd9cbec56e991bbf44221fc0148f244e437f6e3ba2023fae250642a37e"
+  url "https://github.com/noamsiegel/ai-git-guardrails/archive/refs/tags/v0.8.2.tar.gz"
+  sha256 "01b9110fb049c13c523322045d7f098a197e6407f655f39e446c86c51e3ba0cd"
   license "MIT"
   head "https://github.com/noamsiegel/ai-git-guardrails.git", branch: "main"
 
-  depends_on "bash"
-  depends_on "lefthook"
-  depends_on "gitleaks"
   depends_on "actionlint"
+  depends_on "bash"
+  depends_on "gitleaks"
+  depends_on "lefthook"
 
   def install
     bin.install "ai-git-guardrails"
@@ -44,6 +44,6 @@ class AiGitGuardrails < Formula
 
   test do
     assert_match(/ai-git-guardrails/, shell_output("#{bin}/ai-git-guardrails --version"))
-    system "#{bin}/ai-git-guardrails", "doctor"
+    system bin/"ai-git-guardrails", "doctor"
   end
 end
