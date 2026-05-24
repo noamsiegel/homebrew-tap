@@ -11,10 +11,15 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Update Homebrew (macos-latest runners set HOMEBREW_NO_AUTO_UPDATE=1)
-        # Without this, dependencies like `bun` (recently added to homebrew-core)
-        # aren't visible to the audit/install step.
-        run: brew update
+      - name: Update Homebrew + tap third-party formula sources
+        # macos-latest sets HOMEBREW_NO_AUTO_UPDATE=1; explicitly update so
+        # dependencies declared in our formulas resolve correctly.
+        # `bun` lives in oven-sh/bun (Bun's official tap), not homebrew-core,
+        # so any formula declaring `depends_on "bun"` (e.g. ai-trace) needs
+        # that tap available before audit/install runs.
+        run: |
+          brew update
+          brew tap oven-sh/bun
 
       - name: Tap the working tree
         # Homebrew 4.x rejects path-based `brew install` / `brew audit`.
