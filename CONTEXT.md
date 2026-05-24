@@ -10,7 +10,7 @@
 |---|---|---|---|
 | `agents-toc` | `noamsiegel/agents-toc` | GoReleaser-generated binary archives for macOS/Linux x86_64/arm64 | Upstream GoReleaser release |
 | `git-guardrails` | `noamsiegel/git-guardrails` | Source tarball; installs shell script plus shared hook resources | Manual tap bump |
-| `ai-trace` | `noamsiegel/ai-trace` | Source tarball; installs TypeScript CLI under `libexec` with a Bun wrapper | Manual tap bump |
+| `agents-trace` | `noamsiegel/agents-trace` | Source tarball; installs TypeScript CLI under `libexec` with a Bun wrapper | Manual tap bump |
 | `git-wt` | `noamsiegel/git-wt` | Source tarball; installs Bash CLI, `wt` symlink, plugin registry, examples, docs | Manual tap bump |
 
 ## Naming policy

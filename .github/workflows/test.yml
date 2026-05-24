@@ -15,7 +15,7 @@ jobs:
         # macos-latest sets HOMEBREW_NO_AUTO_UPDATE=1; explicitly update so
         # dependencies declared in our formulas resolve correctly.
         # `bun` lives in oven-sh/bun (Bun's official tap), not homebrew-core,
-        # so any formula declaring `depends_on "bun"` (e.g. ai-trace) needs
+        # so any formula declaring `depends_on "bun"` (e.g. agents-trace) needs
         # that tap available before audit/install runs.
         run: |
           brew update

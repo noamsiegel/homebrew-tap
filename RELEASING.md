@@ -6,7 +6,7 @@ This repo publishes Homebrew formulas. Upstream product repos own product releas
 
 - `Formula/agents-toc.rb`: auto-managed by upstream GoReleaser. Do not hand-edit routine bumps.
 - `Formula/git-guardrails.rb`: manual source-tarball bump.
-- `Formula/ai-trace.rb`: manual source-tarball bump.
+- `Formula/agents-trace.rb`: manual source-tarball bump.
 - `Formula/git-wt.rb`: manual source-tarball bump.
 
 ## Manual formula bump
