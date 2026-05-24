@@ -44,6 +44,9 @@ class AiGitGuardrails < Formula
 
   test do
     assert_match(/ai-git-guardrails/, shell_output("#{bin}/ai-git-guardrails --version"))
-    system bin/"ai-git-guardrails", "doctor"
+    # doctor loads checks/registry.sh and runs registry-driven reachability checks.
+    assert_match(/git reachable/, shell_output("#{bin}/ai-git-guardrails doctor 2>&1"))
+    # branch-guard comes from checks/registry.sh; catches missing or incomplete registry packaging.
+    assert_match(/branch-guard/, (pkgshare/"checks/registry.sh").read)
   end
 end

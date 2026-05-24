@@ -20,6 +20,9 @@ class AiTrace < Formula
   end
 
   test do
+    # --help check (binary wiring)
     assert_match(/ai-trace/, shell_output("#{bin}/ai-trace --help"))
+    # scrub-rules loads src/core/scrubbers.ts via the cli wrapper; catches missing src/ in pkgshare/libexec
+    assert_match(/github-pat/, shell_output("#{bin}/ai-trace scrub-rules"))
   end
 end
