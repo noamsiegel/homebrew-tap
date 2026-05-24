@@ -26,6 +26,7 @@ class GitWt < Formula
   test do
     assert_match(/^wt /, shell_output("#{bin}/git-wt --version"))
     # Verify the registry resolves correctly post-install.
-    assert_match(/herdr/, shell_output("#{bin}/git-wt plugin install nonexistent 2>&1", 1))
+    # `plugin install <unknown>` exits 20 (guardrail) and lists known plugins.
+    assert_match(/herdr/, shell_output("#{bin}/git-wt plugin install nonexistent 2>&1", 20))
   end
 end
