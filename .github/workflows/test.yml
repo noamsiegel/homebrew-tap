@@ -30,7 +30,10 @@ jobs:
 
       - name: Audit, install, and test each formula
         run: |
-          set -e
+          # Aggregate failures instead of bailing on the first one. A single
+          # transient upstream issue (e.g., GitHub 502 on a release tarball)
+          # shouldn't prevent every other formula from being tested.
+          failed=()
           for formula in Formula/*.rb; do
             name=$(basename "$formula" .rb)
             ref="noamsiegel/tap/$name"
@@ -39,9 +42,19 @@ jobs:
             brew audit --strict --online "$ref" || true
             echo "::endgroup::"
             echo "::group::Install $name"
-            brew install --build-from-source "$ref"
+            if ! brew install --build-from-source "$ref"; then
+              failed+=("$name (install)")
+              echo "::endgroup::"
+              continue
+            fi
             echo "::endgroup::"
             echo "::group::Test $name"
-            brew test "$ref"
+            if ! brew test "$ref"; then
+              failed+=("$name (test)")
+            fi
             echo "::endgroup::"
           done
+          if (( ${#failed[@]} > 0 )); then
+            echo "::error::Failed formulas: ${failed[*]}"
+            exit 1
+          fi
