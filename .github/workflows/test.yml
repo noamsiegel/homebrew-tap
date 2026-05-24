@@ -37,6 +37,9 @@ jobs:
           for formula in Formula/*.rb; do
             name=$(basename "$formula" .rb)
             ref="noamsiegel/tap/$name"
+            echo "::group::Prepare $name"
+            brew uninstall --force "$ref" || true
+            echo "::endgroup::"
             echo "::group::Audit $name"
             # `audit --online` hits external URLs and can be flaky; allow failures.
             brew audit --strict --online "$ref" || true
@@ -45,6 +48,7 @@ jobs:
             if ! brew install --build-from-source "$ref"; then
               failed+=("$name (install)")
               echo "::endgroup::"
+              brew uninstall --force "$ref" || true
               continue
             fi
             echo "::endgroup::"
@@ -52,6 +56,9 @@ jobs:
             if ! brew test "$ref"; then
               failed+=("$name (test)")
             fi
+            echo "::endgroup::"
+            echo "::group::Cleanup $name"
+            brew uninstall --force "$ref" || true
             echo "::endgroup::"
           done
           if (( ${#failed[@]} > 0 )); then
