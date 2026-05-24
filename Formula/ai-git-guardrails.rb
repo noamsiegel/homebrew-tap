@@ -4,6 +4,7 @@ class AiGitGuardrails < Formula
   url "https://github.com/noamsiegel/ai-git-guardrails/archive/refs/tags/v0.8.3.tar.gz"
   sha256 "500e8e73a4e078b2063ebabafd2d255b10ecf6721553f334069b4f2c5547fe1b"
   license "MIT"
+  deprecate! date: "2026-05-24", because: "renamed to git-guardrails"
   head "https://github.com/noamsiegel/ai-git-guardrails.git", branch: "main"
 
   depends_on "actionlint"

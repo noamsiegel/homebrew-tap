@@ -7,7 +7,7 @@ Homebrew tap for Noam Siegel's agentic-coding CLIs and support tools.
 ```bash
 brew tap noamsiegel/tap
 brew install git-wt              # parallel-safe git worktree CLI
-brew install ai-git-guardrails   # git-hook quality layer for AI-coding workflows
+brew install git-guardrails      # git-hook quality layer for AI-coding workflows
 brew install ai-trace            # AI coding transcript capture for PRs
 brew install agents-toc          # AGENTS.md lazy-load index generator
 ```
@@ -16,7 +16,7 @@ brew install agents-toc          # AGENTS.md lazy-load index generator
 
 ```bash
 brew update
-brew upgrade git-wt              # or ai-git-guardrails / ai-trace / agents-toc
+brew upgrade git-wt              # or git-guardrails / ai-trace / agents-toc
 ```
 
 ## Uninstall
@@ -31,9 +31,11 @@ brew untap noamsiegel/tap        # if you also want to remove the tap itself
 | Formula | Repo | Update mode | Description |
 |---|---|---|---|
 | [`agents-toc`](Formula/agents-toc.rb) | [noamsiegel/agents-toc](https://github.com/noamsiegel/agents-toc) | Auto-managed by GoReleaser | Keeps a one-line lazy-load index inside AGENTS.md in sync |
-| [`ai-git-guardrails`](Formula/ai-git-guardrails.rb) | [noamsiegel/ai-git-guardrails](https://github.com/noamsiegel/ai-git-guardrails) | Manual tap bump | Git-hook quality layer for AI-coding workflows |
+| [`git-guardrails`](Formula/git-guardrails.rb) | [noamsiegel/git-guardrails](https://github.com/noamsiegel/git-guardrails) | Manual tap bump | Git-hook quality layer for AI-coding workflows |
 | [`ai-trace`](Formula/ai-trace.rb) | [noamsiegel/ai-trace](https://github.com/noamsiegel/ai-trace) | Manual tap bump | Captures AI coding session transcripts as secret gists linked from PRs |
 | [`git-wt`](Formula/git-wt.rb) | [noamsiegel/git-wt](https://github.com/noamsiegel/git-wt) | Manual tap bump | Parallel-safe git worktree CLI for agentic coding sessions |
+
+`ai-git-guardrails` remains as a deprecated compatibility formula while users migrate to `git-guardrails`.
 
 ## Formula updates
 

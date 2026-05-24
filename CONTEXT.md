@@ -9,15 +9,18 @@
 | Formula | Upstream | Packaging style | Update owner |
 |---|---|---|---|
 | `agents-toc` | `noamsiegel/agents-toc` | GoReleaser-generated binary archives for macOS/Linux x86_64/arm64 | Upstream GoReleaser release |
-| `ai-git-guardrails` | `noamsiegel/ai-git-guardrails` | Source tarball; installs shell script plus shared hook resources | Manual tap bump |
+| `git-guardrails` | `noamsiegel/git-guardrails` | Source tarball; installs shell script plus shared hook resources | Manual tap bump |
+| `ai-git-guardrails` | `noamsiegel/ai-git-guardrails` | Deprecated compatibility formula for the old name | Manual tap bump |
 | `ai-trace` | `noamsiegel/ai-trace` | Source tarball; installs TypeScript CLI under `libexec` with a Bun wrapper | Manual tap bump |
 | `git-wt` | `noamsiegel/git-wt` | Source tarball; installs Bash CLI, `wt` symlink, plugin registry, examples, docs | Manual tap bump |
 
 ## Naming history
 
-v0.8.0 renamed old formulas to the current `ai-*` names. The old formula files were deleted. Do not reintroduce old formula names in README install paths, formula paths, workflow names, or examples.
+v0.8.0 renamed old formulas to `ai-*` names. `ai-git-guardrails` is now being renamed again to `git-guardrails` because the product boundary is universal Git hook checks, not AI-specific behavior.
 
-Compatibility references may remain only when they are explicit migration notes for installed users. Example: `ai-git-guardrails` caveats describe legacy hook markers and config paths so users can recover old installs safely.
+Use `git-guardrails` in README install paths, formula paths, workflow names, and examples. Compatibility references to `ai-git-guardrails` or older `guardrails` names may remain only as explicit migration notes for installed users. The old `ai-git-guardrails` formula remains temporarily as a deprecated compatibility formula until migration safety is confirmed.
+
+As of 2026-05-24, `noamsiegel/git-guardrails` is the canonical upstream. `Formula/git-guardrails.rb` points at the canonical repo and installs both `git-guardrails` plus the temporary `ai-git-guardrails` compatibility wrapper shipped by upstream.
 
 ## Formula consistency policy
 

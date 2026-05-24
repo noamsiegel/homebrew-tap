@@ -5,7 +5,8 @@ This repo publishes Homebrew formulas. Upstream product repos own product releas
 ## Formula ownership
 
 - `Formula/agents-toc.rb`: auto-managed by upstream GoReleaser. Do not hand-edit routine bumps.
-- `Formula/ai-git-guardrails.rb`: manual source-tarball bump.
+- `Formula/git-guardrails.rb`: manual source-tarball bump.
+- `Formula/ai-git-guardrails.rb`: deprecated compatibility formula for the old guardrails name.
 - `Formula/ai-trace.rb`: manual source-tarball bump.
 - `Formula/git-wt.rb`: manual source-tarball bump.
 
@@ -55,6 +56,7 @@ Routine updates must come from the upstream `agents-toc` release workflow. If ge
 - Release was created from the wrong tag: delete/recreate the bad upstream tag and release before calculating tap sha256.
 - Tap formula points at wrong artifact: update `url`/`sha256`, rerun `brew fetch --force --build-from-source`, reinstall, and PR the correction.
 - Install breaks from stale hook shims after a rename: run the current CLI's install/repair command in affected repos. Do not restore old formula names in this tap.
+- `git-guardrails` rename fallout: verify the canonical upstream `noamsiegel/git-guardrails` tag exists, the formula URL/head point at that repo, and the formula still installs the temporary `ai-git-guardrails` compatibility wrapper.
 - Missing runtime files in package share: fix the formula `install` block, rebuild from source, run `brew test`, and smoke test the command that needs the data file.
 
 ## Automation options
