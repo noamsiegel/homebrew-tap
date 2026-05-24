@@ -11,11 +11,8 @@ class GitGuardrails < Formula
   depends_on "gitleaks"
   depends_on "lefthook"
 
-  conflicts_with "ai-git-guardrails", because: "git-guardrails installs an ai-git-guardrails compatibility wrapper"
-
   def install
     bin.install "git-guardrails"
-    bin.install "ai-git-guardrails"
     pkgshare.install "lefthook.yml", "gitleaks.toml", "commitlint.config.cjs"
     (pkgshare / "checks").install Dir["checks/*"]
     (pkgshare / "tests").install Dir["tests/*"]
@@ -33,15 +30,6 @@ class GitGuardrails < Formula
 
       To configure new clones to auto-install git-guardrails:
         git-guardrails --global-template
-
-      Migration notes:
-        - If ai-git-guardrails is installed, run `brew uninstall ai-git-guardrails`
-          before installing git-guardrails.
-        - Existing ai-git-guardrails hook markers, AI_GIT_GUARDRAILS_* env vars,
-          and ~/.config/ai-git-guardrails/ config remain supported temporarily.
-        - Old guardrails markers/env/config are still handled by the upstream CLI.
-        - When ready, run `git-guardrails install` in enrolled repos to refresh
-          hooks to the command name provided by this formula.
 
       See `git-guardrails --help` and the README for details.
     EOS
