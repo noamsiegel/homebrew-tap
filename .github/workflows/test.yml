@@ -11,6 +11,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Update Homebrew (macos-latest runners set HOMEBREW_NO_AUTO_UPDATE=1)
+        # Without this, dependencies like `bun` (recently added to homebrew-core)
+        # aren't visible to the audit/install step.
+        run: brew update
+
       - name: Tap the working tree
         # Homebrew 4.x rejects path-based `brew install` / `brew audit`.
         # Tap the checked-out repo so the formulas are addressable as
