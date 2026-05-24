@@ -22,6 +22,7 @@ This repo owns formula packaging only. Product behavior, version constants, rele
 - Do not hand-edit GoReleaser-managed fields in `agents-toc.rb`; fix upstream release config instead.
 - Keep README install commands aligned with formula file names.
 - Update `RELEASING.md` when release mechanics change.
+- Dogfood `ai-trace`: AI-authored PRs must run `ai-trace pr-attach` and carry exactly one `🤖 ai-trace:` marker; direct emergency pushes without a PR must run `ai-trace gist-create` or `ai-trace collect` for local audit evidence.
 
 ## Verification
 
