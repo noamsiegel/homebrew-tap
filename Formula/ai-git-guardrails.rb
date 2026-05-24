@@ -1,10 +1,9 @@
 class AiGitGuardrails < Formula
-  desc "Deprecated compatibility wrapper for git-guardrails"
+  desc "Compatibility wrapper for git-guardrails"
   homepage "https://github.com/noamsiegel/git-guardrails"
   url "https://github.com/noamsiegel/git-guardrails/archive/refs/tags/v0.9.0.tar.gz"
   sha256 "42bc56c0ac93006e24285c2a0fc59d630043101c876b52ec16786290c0194e79"
   license "MIT"
-  deprecate! date: "2026-05-24", because: "renamed to git-guardrails"
   head "https://github.com/noamsiegel/git-guardrails.git", branch: "main"
 
   depends_on "actionlint"
@@ -27,7 +26,8 @@ class AiGitGuardrails < Formula
 
   def caveats
     <<~EOS
-      ai-git-guardrails is deprecated. Install the renamed formula instead:
+      ai-git-guardrails is a compatibility formula for the renamed command.
+      Prefer the canonical formula for new installs:
         brew uninstall ai-git-guardrails
         brew install git-guardrails
 

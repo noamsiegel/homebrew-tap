@@ -6,7 +6,7 @@ This repo publishes Homebrew formulas. Upstream product repos own product releas
 
 - `Formula/agents-toc.rb`: auto-managed by upstream GoReleaser. Do not hand-edit routine bumps.
 - `Formula/git-guardrails.rb`: manual source-tarball bump.
-- `Formula/ai-git-guardrails.rb`: deprecated compatibility formula for the old guardrails name.
+- `Formula/ai-git-guardrails.rb`: compatibility formula for the old guardrails name.
 - `Formula/ai-trace.rb`: manual source-tarball bump.
 - `Formula/git-wt.rb`: manual source-tarball bump.
 

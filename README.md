@@ -35,7 +35,7 @@ brew untap noamsiegel/tap        # if you also want to remove the tap itself
 | [`ai-trace`](Formula/ai-trace.rb) | [noamsiegel/ai-trace](https://github.com/noamsiegel/ai-trace) | Manual tap bump | Captures AI coding session transcripts as secret gists linked from PRs |
 | [`git-wt`](Formula/git-wt.rb) | [noamsiegel/git-wt](https://github.com/noamsiegel/git-wt) | Manual tap bump | Parallel-safe git worktree CLI for agentic coding sessions |
 
-`ai-git-guardrails` remains as a deprecated compatibility formula while users migrate to `git-guardrails`.
+`ai-git-guardrails` remains as a compatibility formula while users migrate to `git-guardrails`.
 
 ## Formula updates
 
