@@ -1,8 +1,8 @@
 class AgentsTrace < Formula
   desc "Capture AI coding session transcripts as PR-linked gists"
   homepage "https://github.com/noamsiegel/agents-trace"
-  url "https://github.com/noamsiegel/agents-trace/archive/refs/tags/v0.10.0.tar.gz"
-  sha256 "92881f6e5da60fb858de05ff40075653cf2e374632358d0870845aa48842b94a"
+  url "https://github.com/noamsiegel/agents-trace/archive/refs/tags/v0.11.0.tar.gz"
+  sha256 "63330f46d52a41bb0aaa723cb244579fac68b5ed563366dd734e1d0a0ca578a2"
   license "MIT"
   head "https://github.com/noamsiegel/agents-trace.git", branch: "main"
 
