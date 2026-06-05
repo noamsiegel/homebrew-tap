@@ -1,8 +1,8 @@
 class GitWt < Formula
   desc "Parallel-safe git worktree CLI for agentic coding sessions"
   homepage "https://github.com/noamsiegel/git-wt"
-  url "https://github.com/noamsiegel/git-wt/archive/refs/tags/v0.10.3.tar.gz"
-  sha256 "97bfceac335707c70144ded9e87c13d754071a37d76d32f669415e423dd01cd2"
+  url "https://github.com/noamsiegel/git-wt/archive/refs/tags/v0.10.4.tar.gz"
+  sha256 "edb79b45074b912ed8333ab86cb7c56450cdebc3df285b63b5d38fb1bba1c4b5"
   license "MIT"
   head "https://github.com/noamsiegel/git-wt.git", branch: "main"
 
