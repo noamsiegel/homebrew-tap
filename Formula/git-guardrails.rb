@@ -1,8 +1,8 @@
 class GitGuardrails < Formula
   desc "User-owned Git hook quality layer"
   homepage "https://github.com/noamsiegel/git-guardrails"
-  url "https://github.com/noamsiegel/git-guardrails/archive/refs/tags/v0.9.2.tar.gz"
-  sha256 "8db0d6643c84bc5d93fb1dda8559aec2c0fbb6fbaff5b75969d76e6bc13de8b1"
+  url "https://github.com/noamsiegel/git-guardrails/archive/refs/tags/v0.10.0.tar.gz"
+  sha256 "e5e8003ee2af5f96beb1e29615aaf1622e4c0151f26c1d1cfb259fbf378aa884"
   license "MIT"
   head "https://github.com/noamsiegel/git-guardrails.git", branch: "main"
 
@@ -10,6 +10,8 @@ class GitGuardrails < Formula
   depends_on "bash"
   depends_on "gitleaks"
   depends_on "lefthook"
+  # python-bugs shells out to `uvx ruff@<pinned>`; without uv the check skips.
+  depends_on "uv"
 
   def install
     bin.install "git-guardrails"
