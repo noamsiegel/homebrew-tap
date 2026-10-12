@@ -1,20 +1,20 @@
 class AgentsTrace < Formula
   desc "Capture AI coding session transcripts as PR-linked gists"
   homepage "https://github.com/noamsiegel/agents-trace"
-  url "https://github.com/noamsiegel/agents-trace/archive/refs/tags/v0.11.0.tar.gz"
-  sha256 "63330f46d52a41bb0aaa723cb244579fac68b5ed563366dd734e1d0a0ca578a2"
+  url "https://github.com/noamsiegel/agents-trace/archive/refs/tags/v0.12.0.tar.gz"
+  sha256 "3c38f4ed6113370244cb94c14fb15b874502396aaf0c7eeb1780738a17b7c508"
   license "MIT"
   head "https://github.com/noamsiegel/agents-trace.git", branch: "main"
 
-  depends_on "bun"
   depends_on "gh"
   depends_on "gitleaks"
+  depends_on "oven-sh/bun/bun"
 
   def install
     libexec.install "cli.ts", "package.json", "src"
     (bin / "agents-trace").write <<~SH
       #!/usr/bin/env bash
-      exec #{Formula["bun"].opt_bin}/bun #{libexec}/cli.ts "$@"
+      exec #{formula_opt_bin("bun")}/bun #{libexec}/cli.ts "$@"
     SH
     chmod 0755, bin / "agents-trace"
   end
