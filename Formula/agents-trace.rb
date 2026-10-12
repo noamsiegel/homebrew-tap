@@ -14,7 +14,7 @@ class AgentsTrace < Formula
     libexec.install "cli.ts", "package.json", "src"
     (bin / "agents-trace").write <<~SH
       #!/usr/bin/env bash
-      exec #{Formula["bun"].opt_bin}/bun #{libexec}/cli.ts "$@"
+      exec #{formula_opt_bin("bun")}/bun #{libexec}/cli.ts "$@"
     SH
     chmod 0755, bin / "agents-trace"
   end
