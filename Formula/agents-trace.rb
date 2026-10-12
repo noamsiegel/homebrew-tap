@@ -6,9 +6,9 @@ class AgentsTrace < Formula
   license "MIT"
   head "https://github.com/noamsiegel/agents-trace.git", branch: "main"
 
-  depends_on "oven-sh/bun/bun"
   depends_on "gh"
   depends_on "gitleaks"
+  depends_on "oven-sh/bun/bun"
 
   def install
     libexec.install "cli.ts", "package.json", "src"
