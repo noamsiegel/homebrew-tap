@@ -20,6 +20,7 @@ jobs:
         run: |
           brew update
           brew tap oven-sh/bun
+          brew trust --formula oven-sh/bun/bun
 
       - name: Tap the working tree
         # Homebrew 4.x rejects path-based `brew install` / `brew audit`.
