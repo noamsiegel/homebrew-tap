@@ -6,7 +6,7 @@ class AgentsTrace < Formula
   license "MIT"
   head "https://github.com/noamsiegel/agents-trace.git", branch: "main"
 
-  depends_on "bun"
+  depends_on "oven-sh/bun/bun"
   depends_on "gh"
   depends_on "gitleaks"
 
